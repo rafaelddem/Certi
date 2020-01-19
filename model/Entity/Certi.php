@@ -3,11 +3,14 @@
 	class Certi {
 		
 		private $parametro;
+		private $separador = " e ";
+		private $umPorExtenso = "um";
+		private $cemPorExtenso = "cem";
+		private $milPorExtenso = "mil";
 		private $unidadePorExtenso = array(1 => 'um', 2 => 'dois', 3 => 'três', 4 => 'quatro', 5 => 'cinco', 6 => 'seis', 7 => 'sete', 8 => 'oito', 9 => 'nove');
 		private $dezenaPorExtenso1 = array(0 => 'dez', 1 => 'onze', 2 => 'doze', 3 => 'treze', 4 => 'quatorze', 5 => 'quinze', 6 => 'dezesseis', 7 => 'dezessete', 8 => 'dezoito', 9 => 'dezenove');
 		private $dezenaPorExtenso2 = array(2 => 'vinte', 3 => 'trinta', 4 => 'quarenta', 5 => 'cinquenta', 6 => 'sessenta', 7 => 'setenta', 8 => 'oitenta', 9 => 'noventa');
-		private $centenaPorExtenso1 = "cem";
-		private $centenaPorExtenso2 = array(1 => 'cento', 2 => 'duzentos', 3 => 'trezentos', 4 => 'quatrocentos', 5 => 'quinhentos', 6 => 'seiscentos', 7 => 'setecentos', 8 => 'oitocentos', 9 => 'novecentos');
+		private $centenaPorExtenso = array(1 => 'cento', 2 => 'duzentos', 3 => 'trezentos', 4 => 'quatrocentos', 5 => 'quinhentos', 6 => 'seiscentos', 7 => 'setecentos', 8 => 'oitocentos', 9 => 'novecentos');
 		
 		public function __construct($parametro) {
 			$this -> setParametro($parametro);
@@ -62,7 +65,7 @@
 				if (empty($retorno)) {
 					$retorno = $this -> dezenaPorExtenso2[$dezena];
 				} else {
-					$retorno = $this -> dezenaPorExtenso2[$dezena]." e ".$retorno;
+					$retorno = $this -> dezenaPorExtenso2[$dezena].$this -> separador.$retorno;
 				}
 			}
 			return $retorno;
@@ -72,13 +75,13 @@
 			$retorno = "";
 			if ($centena > 0) {
 				if (!empty($dezena)) {
-					$retorno = $this -> centenaPorExtenso2[$centena]." e ".$dezena;
+					$retorno = $this -> centenaPorExtenso[$centena].$this -> separador.$dezena;
 				} else {
 					if ($centena > 1) {
-						$retorno = $this -> centenaPorExtenso2[$centena];
+						$retorno = $this -> centenaPorExtenso[$centena];
 					}
 					if ($centena == 1) {
-						$retorno = $this -> centenaPorExtenso1;
+						$retorno = $this -> cemPorExtenso;
 					}
 				}
 				return $retorno;
@@ -89,11 +92,14 @@
 		
 		public function buscaNomeMilhar($centena, $unidadeDeMilhar, $dezenaDeMilhar) {
 			$milhar = $this -> buscaNomeDezenaUnidade($unidadeDeMilhar, $dezenaDeMilhar);
+			
 			if (empty($milhar)) return $centena;
 			
-			if (empty($centena)) return $milhar." mil";
+			$milhar = ($milhar == $this -> umPorExtenso) ? $this -> milPorExtenso : $milhar." ".$this -> milPorExtenso;
 			
-			return $milhar." mil e ".$centena;
+			if (empty($centena)) return $milhar;
+			
+			return $milhar.$this -> separador.$centena;
 		}
 		
 	}
