@@ -16,4 +16,4 @@ Document root is C:\xampp\htdocs\Certi
 Press Ctrl-C to quit.
 
 Uma vez executado o comando com sucesso, já é possível fazer os testes.
-Como um exemplo, você pode ir até o navegador, e executar o comando "http:\\localhost:3000\10"
+Como um exemplo, você pode ir até o navegador, e executar o comando "http://localhost:3000/10"
