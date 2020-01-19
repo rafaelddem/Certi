@@ -2,13 +2,12 @@
  
 Olá,
 
-Segue o exercício proposto
-Como a escolha da linguagem estava livre, eu optei por trabalhar com PHP. Então será necessário fazer os testes em uma máquina que tenha o PHP instalado.
-Caso já o tenha configurado, para o teste do exercício, primeiro será necessário executar o comando:
+Segue o exercício proposto.
+Como a escolha da linguagem estava livre, eu optei por trabalhar com PHP. Então será necessário fazer os testes em uma máquina que tenha a linguagem instalada.
+Caso já a tenha configurado, para o teste do exercício, será necessário ir até a pasta onde o projeto foi clonado, e executar o comando:
 
 "php -S localhost:3000"
 
-Pelo prompt, na mesma pasta onde foi feito o clone do projeto.
 Uma mensagem parecida com a seguinte deve aparecer, avisando do sucesso da execução:
 
 PHP 7.3.11 Development Server started at Sun Jan 19 04:40:19 2020
