@@ -91,6 +91,8 @@
 			$milhar = $this -> buscaNomeDezenaUnidade($unidadeDeMilhar, $dezenaDeMilhar);
 			if (empty($milhar)) return $centena;
 			
+			if (empty($centena)) return $milhar." mil";
+			
 			return $milhar." mil e ".$centena;
 		}
 		
