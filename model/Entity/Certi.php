@@ -14,7 +14,7 @@
 		}
 		
 		public function setParametro($parametro) {
-			if (!isset($parametro)) throw new Exception("Não foi informado nenhum valor", 1);
+			if (empty($parametro)) throw new Exception("Não foi informado nenhum valor", 1);
 			
 			if (!is_numeric($parametro)) throw new Exception("O valor passado, deve ser numérico", 2);
 			
